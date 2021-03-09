@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
-const uuid = require('uuid/v4');
 
 const Usuarios = require('./Usuarios')
 const Modulo = db.afterDestroy('modulo', {

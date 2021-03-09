@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
-const uuid = require('uuid/v4');
 const Cursos  = require('../models/Cursos')
 const Capitulos = db.define('capitulos', {
     id: {

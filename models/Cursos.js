@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
-const uuid = require('uuid/v4');
 const Usuarios = require('./Usuarios')
 const Capitulos = require('./Capitulos')
 const Mentoria = require('./Mentoria')
