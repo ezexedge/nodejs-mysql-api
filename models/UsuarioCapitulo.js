@@ -14,6 +14,11 @@ const UsuarioCapitulo = db.define('usuarioCapitulo', {
   capituloId: {
         type: Sequelize.INTEGER
        
+      },
+      created_at: {
+        type: 'TIMESTAMP',
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false
       }
     });
 
