@@ -28,7 +28,11 @@ const Usuarios = db.define('usuarios', {
     ultimoVisto : {
 
         type: Sequelize.STRING
-    }
+    },
+    nivel: Sequelize.INTEGER,
+    mam: Sequelize.STRING,
+    cliente: Sequelize.STRING,
+    lineaDeNegocio: Sequelize.STRING
 });
 
 // Métodos personalizados

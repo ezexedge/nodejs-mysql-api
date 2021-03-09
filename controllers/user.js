@@ -64,7 +64,10 @@ exports.userAll = async (req,res) => {
         name : usuario.name,
         lastName : usuario.lastName,
         cuil: usuario.cuil,
-        ultimoVisto: usuario.ultimoVisto
+        nivel: usuario.nivel,
+        mam: usuario.mam,
+        cliente: usuario.cliente,
+        lineaDeNegocio: usuario.lineaDeNegocio
 
       }
 
