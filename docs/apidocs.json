@@ -33,6 +33,8 @@
 "api/guardar/test/:id" : "get y me trae todo los resultado del id del test ",
 "api/guardar" : "get de todos los resultados",
 
+"api/resultados POST" : "tenes que pasar por parametro un user y un test y te devuelve un resultado si es que existe de lo contrario te devuelve un arreglo vacio",
+
 
 "api/mentoryday" : "get trae todos los mentoryday",
 "api/mentoryday/:id" : "trae un mentoryday"

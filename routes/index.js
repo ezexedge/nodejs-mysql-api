@@ -25,6 +25,7 @@ module.exports = function(){
     router.get('/guardar', mentoriaControllers.guardarGetAll)
     router.get('/guardar/usuario/:id', mentoriaControllers.guardarPorUsuario)
     router.get('/guardar/test/:id', mentoriaControllers.guardarPorTest)
+    router.post('/resultados', mentoriaControllers.guardarFiltrado)
 
 
     router.get('/capitulos',authControllers.requireSignin,capituloControllers.capitulosTodos)

@@ -249,7 +249,24 @@ exports.guardar = async (req,res) => {
 
 
 
+exports.guardarFiltrado = async (req,res) => {
+
+  try{
+
+    console.log(req.body)
+      const idTest = req.body.test
+      const idUser = req.body.user
 
 
+    const resultado = await ResultadoTest.findAll({
+      where: { user : idUser , test: idTest }
+    })
+
+    res.status(200).json(resultado)
+
+  }catch(err){
+    res.status(400).json({error : err.message})
+  }
+}
 
 
