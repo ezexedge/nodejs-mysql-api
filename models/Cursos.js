@@ -4,6 +4,8 @@ const uuid = require('uuid/v4');
 const Usuarios = require('./Usuarios')
 const Capitulos = require('./Capitulos')
 const Mentoria = require('./Mentoria')
+const Test = require('./Test')
+
 const Cursos = db.define('cursos', {
     id: {
         type: Sequelize.INTEGER,
@@ -18,6 +20,9 @@ const Cursos = db.define('cursos', {
 });
 
 
+
+
+Test.hasOne(Cursos,{as:"test"})
 
 
 Capitulos.belongsTo(Cursos,{as:"curso"})

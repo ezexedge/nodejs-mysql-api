@@ -10,8 +10,9 @@ const UsuarioCapitulo = require('./UsuarioCapitulo')
 const Usuarios = db.define('usuarios', {
     id: {
         type: Sequelize.INTEGER, 
-        primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        primaryKey: true
+
     },
     name: {
         type: Sequelize.STRING
@@ -22,7 +23,7 @@ const Usuarios = db.define('usuarios', {
     ,
     cuil: {
         type: Sequelize.STRING,
-        allowNull : false
+        allowNull: false
     },
     ultimoVisto : {
 

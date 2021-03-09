@@ -1,11 +1,14 @@
+const path = require('path')
+const nodeMailer = require("nodemailer");
 const Cursos = require('../models/Cursos')
-const { v4: uuidv4 } = require('uuid');
 const Mentoria = require('../models/Mentoria')
 const Capitulos = require('../models/Capitulos')
 const Usuarios = require('../models/Usuarios')
 const UsuarioInscripto = require('../models/UsuarioInscripto')
 const MentoryDay = require('../models/MentoryDay')
 const ResultadoTest = require('../models/ResultadoTest')
+
+const { sendEmailWithNodemailer } = require('../helpers/email')
 
 exports.mentoriaAll = async (req, res) => {
 
@@ -63,6 +66,27 @@ exports.mentoriaById = async (req, res) => {
     })
 }
 
+exports.usuariosIncriptosPorMentoria = async (req, res) => {
+
+  const id = req.params.id
+  await Mentoria.findByPk(id, {
+    include: [
+      {
+        model: Usuarios,
+        as: "inscripciones",
+        through: { attributes: [] }
+        
+      }]
+    
+  }).then((curso) => {
+
+    res.status(200).json(curso)
+  })
+    .catch((err) => {
+      res.status(400).json({ error: err })
+    })
+}
+
 
 
 
@@ -108,8 +132,23 @@ exports.inscripcion = async (req, res) => {
       let nuevoDisponibilidad = mentoria.disponibilidad - 1
 
 
+      const emailData = {
+        from: "juan@texdinamo.com", 
+        to: req.body.email,
+        subject: "INSCRIPCION A MENTORIA",
+        text: 'pepa',
+        html: `
+        <p> Hola ${usuario.name} ${usuario.lastName} estas incripto a la mentoria ${mentoria.nombre} </p>
+        `
+      };
+
+      await sendEmailWithNodemailer(req,res,emailData)
+   
+
       await mentoria.update({ disponibilidad: nuevoDisponibilidad })
       // console.log('aca ----------',mentoria.disponibilidad)
+
+
 
 
 

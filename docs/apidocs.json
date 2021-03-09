@@ -5,21 +5,26 @@
   "/api/signout": "post signout",
 
   "/api/user/:id": "get user",
+  "/api/users": "get de todos los usuarios",
+  "/api/add/users": "post agrega todos los usuaros usuarios",
+
 
   "/api/cursos": "get todos los cursos",
   "/api/cursos/:id": "get de un solo curso",
   "api/cursos/capitulos/:id": "trae todo los capitulos de un curso el id hace referencia a un curso y trae lo capitulos",
 
   "/api/capitulos": "get todos los capitulos",
-  "/api/capitulos/:id": "get de un solo capitulo",
-  "/api/capitulos/:id": "post guarda al id del usuario que vio el capitulo",
+  "/api/capitulos/:id  GET": "get de un solo capitulo",
+  "/api/capitulos/:id  POST": "post guarda al id del usuario que vio el capitulo",
 
   "/api/test": "get de todos los test",
   "/api/test/:id": "get de un solo test",
 
   "/api/mentoria": "get todas las mentorias",
   "/api/mentoria/:id": "get de una mentoria con su mentorydat",
-  "/api/mentoria/inscripcion/:id": "post de una inscripcion en mentoria",
+  "/api/mentoria/inscripcion/:id  POST": "POST de una inscripcion en mentoria con el id de la mentoria",
+  "/api/mentoria/inscripcion/:id   GET": "GET el id hace referencia al id de una mentoria , dentro de la respuesta hay un arreglo que se llama inscripciones donde estan todos los usuarios inscriptos",
+
 
   "/api/respuestas/preguntas/:id": "GET  que devuelve las respuestas de una preguntas por medio del :id que deberia ser el id de la pregunta",
 

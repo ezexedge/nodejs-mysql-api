@@ -31,7 +31,8 @@ module.exports = function(){
     router.get('/capitulos/:id',authControllers.requireSignin,capituloControllers.capitulo)
     router.post('/capitulos/:id',authControllers.requireSignin,capituloControllers.usuarioVioCapitulo)
 
- 
+    router.get('/mentoria/inscriptos/:id',mentoriaControllers.usuariosIncriptosPorMentoria)
+
     router.get('/mentoria',mentoriaControllers.mentoriaAll)
     router.get('/mentoria/:id',mentoriaControllers.mentoriaById)
     router.post('/mentoria/inscripcion/:id',authControllers.requireSignin,mentoriaControllers.inscripcion)
@@ -42,8 +43,10 @@ module.exports = function(){
     router.get('/test',authControllers.requireSignin,testControllers.testAll)
     router.get('/test/:id',authControllers.requireSignin,testControllers.testByCursoId)
     
- 
+    router.post('/add/users',userControllers.createUserMultiple)
+    router.get('/users',userControllers.userAll)
     router.get('/user/:id',authControllers.requireSignin,userControllers.userById)
+    
     router.post('/signup', authControllers.signup)
     router.post('/signin', authControllers.signin)
     router.post('/signout', authControllers.signout)

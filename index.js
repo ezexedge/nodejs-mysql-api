@@ -79,5 +79,5 @@ const host = process.env.HOST || '0.0.0.0'
 var port = process.env.PORT || 3000;
 
 
-app.listen(port,function() {
-    console.log("EL SERVIDOR ESTA FUNCIONANDO"); });
+var server=app.listen(port,function() {
+    console.log("app running on port 8080"); });

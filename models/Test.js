@@ -18,15 +18,16 @@ const Test = db.define('test', {
 );
 
 
+
 Test.belongsToMany(Preguntas,{
     through: PreguntasEnTest,
     as: 'preguntasTests'
   })
 
 
-Test.belongsTo(Cursos,{as:"curso"})
+//Test.belongsTo(Cursos,{as:"curso"})
 
-
+//Cursos.hasOne(Test,{as:"test"})
 
 
 module.exports = Test;
