@@ -5,7 +5,7 @@
   "/api/signout": "post signout",
 
   "/api/user/:id": "get user",
-  "/api/users": "get de todos los usuarios",
+  "/api/users": "get de todos los usuarios ARCHIVO CSV",
   "/api/add/users": "post agrega todos los usuaros usuarios",
 
 
