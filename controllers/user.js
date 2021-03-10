@@ -147,6 +147,8 @@ exports.createUserMultiple = async (req,res) => {
 
   //  console.log(data)
 
+  /*
+
     for (let cuil of data){
      // console.log('hola---soy cuil',cuil.cuil)
       
@@ -161,12 +163,34 @@ exports.createUserMultiple = async (req,res) => {
         }
     
     }
+*/
+      let resultado = await  Usuarios.destroy({where:{}})
 
-   
+      
+    
+        for (let cuil of data){
+          
+          const usuario = await Usuarios.findOne({ where: { cuil: cuil.cuil } })
+
+          if(!usuario){
+  
+            await Usuarios.bulkCreate([cuil])
+  
+          }
+          if(usuario){
+            
+            throw new Error(`El usuario con cuil ${usuario.cuil} ya existe`)
+
+        }
+
+        
+        }
+
+      
 
 
 
-          res.status(200).json({message: 'usuarios agregados!'})
+          res.status(200).json({message: 'usuarios agregados'})
 
 
   }catch(err){
