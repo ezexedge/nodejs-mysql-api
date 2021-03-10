@@ -164,7 +164,6 @@ exports.createUserMultiple = async (req,res) => {
     
     }
 */
-      let resultado = await  Usuarios.destroy({where:{}})
 
       
     
