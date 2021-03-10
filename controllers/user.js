@@ -170,6 +170,8 @@ exports.createUserMultiple = async (req,res) => {
         for (let cuil of data){
           
           const usuario = await Usuarios.findOne({ where: { cuil: cuil.cuil } })
+          
+
 
           if(!usuario){
   
@@ -178,8 +180,13 @@ exports.createUserMultiple = async (req,res) => {
           }
           if(usuario){
             
-            throw new Error(`El usuario con cuil ${usuario.cuil} ya existe`)
-
+            await Usuarios.update(cuil,{
+              where: {id: usuario.id}
+            })
+            
+          //  throw new Error(`El usuario con cuil ${usuario.cuil} ya existe`)
+            
+            
         }
 
         
