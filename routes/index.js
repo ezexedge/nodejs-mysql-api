@@ -32,8 +32,8 @@ module.exports = function(){
 
 
     router.get('/capitulos',capituloControllers.capitulosTodos)
-    router.get('/capitulos/:id',capituloControllers.capitulo)
-    router.post('/capitulos/:id',capituloControllers.usuarioVioCapitulo)
+    router.get('/capitulos/:id',authControllers.requireSignin,capituloControllers.capitulo)
+    router.post('/capitulos/:id',authControllers.requireSignin,capituloControllers.usuarioVioCapitulo)
     router.get('/capitulos/datos', capituloControllers.usuarioVioCapituloDate)
 
 

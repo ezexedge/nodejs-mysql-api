@@ -4,6 +4,7 @@ const Usuarios = require('./Usuarios')
 const Capitulos = require('./Capitulos')
 const Mentoria = require('./Mentoria')
 const Test = require('./Test')
+const UsuarioFinalizaron = require('./UsuarioFinalizaron')
 
 const Cursos = db.define('cursos', {
     id: {
@@ -23,6 +24,11 @@ const Cursos = db.define('cursos', {
 
 
 Test.hasOne(Cursos,{as:"test"})
+
+Cursos.belongsToMany(Usuarios,{
+  through: UsuarioFinalizaron,
+  as: 'usuariosFinalizaron'
+})
 
 
 Capitulos.belongsTo(Cursos,{as:"curso"})
