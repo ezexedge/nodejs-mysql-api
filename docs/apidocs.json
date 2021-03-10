@@ -38,6 +38,10 @@
 
 "api/capitulos/usuarios/resultados POST" : "se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String y devuelve un arreglo del usuario y dentro del mismo todos los capitulos que vio en ese fecha ",
 
+
+"api/cursos/finalizado/fecha POST" : "cursos que finalizo una ves que obtuvo el resultado cuando finalizo el test se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String y devuelve un arreglo del usuario y dentro del mismo todos los capitulos que vio en ese fecha . Dentro del objeto curso viene adentro usuariosFinalizaron que e un arreglo con la cantidad de personas que finalizaron el curso ",
+
+
 "api/mentoryday" : "get trae todos los mentoryday",
 "api/mentoryday/:id" : "trae un mentoryday"
     

@@ -250,12 +250,12 @@ exports.guardar = async (req,res) => {
 
 //arreglar lo de momentjs necesito que me devuelva una cadena con datos como mysql en created_at
 //pero que la guardae en db
-console.log(moment(str, 'YYYY-MM-DD').toDate())
+//console.log(moment(str, 'YYYY-MM-DD').toDate())
   const po = {
     usuarioId: req.auth.id,
     cursoId: curso.id ,
     resultado: req.body.aprobado,
-    created_at:  moment(now.format('YYYY-MM-DD HH:mm:ss'))
+    created_at:  moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
   }
 
   const registrado = await UsuarioFinalizado.create(po, { w: 1 }, { returning: true })

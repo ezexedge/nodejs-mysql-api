@@ -5,11 +5,6 @@ const Usuarios = require('../models/Usuarios')
 const  _ = require('lodash')
 exports.cursosTodos = async (req,res) =>{
 
-  include: [
-    {
-      model: Usuarios,
-      as: "usuariosFinalizaron"
-    }]
 
      await Cursos.findAll({ 
       include: [

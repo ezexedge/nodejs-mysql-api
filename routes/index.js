@@ -56,6 +56,7 @@ module.exports = function(){
     
     router.post('/capitulos/usuarios/resultados',userControllers.usuariosFiltrados)
 
+    router.post('/cursos/finalizado/fecha',userControllers.cursosFiltrados)
 
     router.post('/signup', authControllers.signup)
     router.post('/signin', authControllers.signin)

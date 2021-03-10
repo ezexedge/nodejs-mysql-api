@@ -48,6 +48,42 @@ exports.userById = async (req,res) => {
 
 }
 
+exports.cursosFiltrados = async(req,res) => {
+
+  try{
+
+  
+  console.log(req.body)
+  const start = req.body.desde
+  const end = req.body.hasta
+
+
+  const startedDate = new Date(`${start} 00:00:00`);
+  const endDate = new Date(`${end} 00:00:00`);
+  const resultado = await Cursos.findAll({
+    include: [
+     {
+      model: Usuarios,
+      as: "usuariosFinalizaron",
+       through: {where: {
+         created_at : { [Op.between] : [startedDate , endDate ]
+       }
+     }          
+     }
+    
+   }
+]
+})
+
+res.status(200).json(resultado)
+
+
+
+  }catch(err){
+    res.status(400).json({error : err.message})
+  }
+
+}
 
 exports.usuariosFiltrados = async (req,res) => {
 
@@ -93,6 +129,10 @@ exports.usuariosFiltrados = async (req,res) => {
 
 
 }
+
+
+
+
 
 
 
