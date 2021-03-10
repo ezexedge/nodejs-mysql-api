@@ -11,7 +11,8 @@ const Capitulos = db.define('capitulos', {
     link :  Sequelize.STRING,
     casoDeExito: Sequelize.BOOLEAN,
     descripcion: Sequelize.STRING,
-    linkPrev: Sequelize.STRING
+    linkPrev: Sequelize.STRING,
+    speaker: Sequelize.STRING
     }
 );
 
