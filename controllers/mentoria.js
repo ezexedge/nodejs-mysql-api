@@ -1,6 +1,7 @@
 const path = require('path')
 const nodeMailer = require("nodemailer");
 const _ = require('lodash') 
+const moment = require('moment');
 const { Op } = require('sequelize')
 const Cursos = require('../models/Cursos')
 const Mentoria = require('../models/Mentoria')
@@ -9,6 +10,7 @@ const Usuarios = require('../models/Usuarios')
 const UsuarioInscripto = require('../models/UsuarioInscripto')
 const MentoryDay = require('../models/MentoryDay')
 const ResultadoTest = require('../models/ResultadoTest')
+
 const UsuarioFinalizado = require('../models/UsuarioFinalizaron')
 
 const { sendEmailWithNodemailer } = require('../helpers/email')
@@ -242,14 +244,18 @@ exports.guardar = async (req,res) => {
 
   const guardar = await ResultadoTest.create(valores, { w: 1 }, { returning: true })
   
-  const curso = await Cursos.findAll({
+  const curso = await Cursos.findOne({
     where : {testId: req.params.id }
   })
 
+//arreglar lo de momentjs necesito que me devuelva una cadena con datos como mysql en created_at
+//pero que la guardae en db
+console.log(moment(str, 'YYYY-MM-DD').toDate())
   const po = {
-    usuarioId: req.auth,
+    usuarioId: req.auth.id,
     cursoId: curso.id ,
-    resultado: req.body.aprobado
+    resultado: req.body.aprobado,
+    created_at:  moment(now.format('YYYY-MM-DD HH:mm:ss'))
   }
 
   const registrado = await UsuarioFinalizado.create(po, { w: 1 }, { returning: true })
