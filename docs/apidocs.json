@@ -29,7 +29,7 @@
 
   "/api/respuestas/preguntas/:id": "GET  que devuelve las respuestas de una preguntas por medio del :id que deberia ser el id de la pregunta",
 
-"api/guardar/:id" : "POST GUARDAR DATOS DE RESULTADO",
+"api/guardar/:id" : "POST GUARDAR DATOS DE RESULTADO id del test",
 "api/guardar/usuario/:id" : "GET y me trae todo los resultados del id del usuario",
 "api/guardar/test/:id" : "get y me trae todo los resultado del id del test ",
 "api/guardar" : "get de todos los resultados",

@@ -9,6 +9,7 @@ const Usuarios = require('../models/Usuarios')
 const UsuarioInscripto = require('../models/UsuarioInscripto')
 const MentoryDay = require('../models/MentoryDay')
 const ResultadoTest = require('../models/ResultadoTest')
+const UsuarioFinalizado = require('../models/UsuarioFinalizaron')
 
 const { sendEmailWithNodemailer } = require('../helpers/email')
 
@@ -240,7 +241,20 @@ exports.guardar = async (req,res) => {
     
 
   const guardar = await ResultadoTest.create(valores, { w: 1 }, { returning: true })
-  res.status(200).json(guardar)
+  
+  const curso = await Cursos.findAll({
+    where : {testId: req.params.id }
+  })
+
+  const po = {
+    usuarioId: req.auth,
+    cursoId: curso.id ,
+    resultado: req.body.aprobado
+  }
+
+  const registrado = await UsuarioFinalizado.create(po, { w: 1 }, { returning: true })
+  
+  res.status(200).json(registrado)
 
   }catch(err){
     console.log(err)

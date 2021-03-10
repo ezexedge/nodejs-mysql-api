@@ -26,25 +26,14 @@ exports.capitulo = async (req,res,next)=> {
 
     const idCapitulo = req.params.id
 
-    const userId = req.auth.id
     
 
    const curso =   await  Capitulos.findByPk(idCapitulo)
 
    
 
-   let ultimoVisto = `http://localhost:8080/capitulos/${idCapitulo}`
  
-   console.log('---------------ingreso capitulo')
-  const usuarioModificado =  await Usuarios.update({ultimoVisto},{
-       where : { id : userId }
-   })
-   // console.log('aca ----------',mentoria.disponibilidad)
-    
-   if(!usuarioModificado){
-    throw new Error('error al guardar el ultimo capitulo visto')
-}
-
+ 
     
 
   
