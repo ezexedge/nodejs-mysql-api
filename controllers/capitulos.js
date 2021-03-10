@@ -1,5 +1,6 @@
 const Capitulos = require('../models/Capitulos')
 const Usuarios = require('../models/Usuarios')
+const { Op } = require('sequelize')
 const UsuarioCapitulo = require('../models/UsuarioCapitulo')
 
 
@@ -99,6 +100,30 @@ exports.usuarioVioCapitulo = async (req,res) => {
 
     res.status(400).json({ error : err.message})
 
+    }
+}
+
+
+
+exports.usuarioVioCapituloDate = async (req,res) => {
+    try{
+
+        const startedDate = new Date("2020-12-12 00:00:00");
+        const endDate = new Date("2025-12-26 00:00:00");
+
+        const sevenDaysAgo = new Date(new Date().setDate(new Date().getDate() - 7));
+        const resultado = await UsuarioCapitulo.findAll({
+            where: {
+                created_at: {
+                    [Op.between]: ["2018-07-08T14:06:48.000Z", "2027-10-08T22:33:54.000Z"]
+                  }
+             }
+        })
+
+        res.status(200).json(resultado)
+
+    }catch(err){
+        res.status(400).json({err: err.message})
     }
 }
 

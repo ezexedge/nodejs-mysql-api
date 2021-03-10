@@ -31,6 +31,8 @@ module.exports = function(){
     router.get('/capitulos',authControllers.requireSignin,capituloControllers.capitulosTodos)
     router.get('/capitulos/:id',authControllers.requireSignin,capituloControllers.capitulo)
     router.post('/capitulos/:id',authControllers.requireSignin,capituloControllers.usuarioVioCapitulo)
+    router.get('/capitulos/datos', capituloControllers.usuarioVioCapituloDate)
+
 
     router.get('/mentoria/inscriptos/:id',mentoriaControllers.usuariosIncriptosPorMentoria)
 
@@ -48,6 +50,10 @@ module.exports = function(){
     router.get('/users',userControllers.userAll)
     router.get('/user/:id',authControllers.requireSignin,userControllers.userById)
     
+    
+    router.post('/vieron',userControllers.usuariosFiltrados)
+
+
     router.post('/signup', authControllers.signup)
     router.post('/signin', authControllers.signin)
     router.post('/signout', authControllers.signout)

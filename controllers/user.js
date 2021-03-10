@@ -1,9 +1,10 @@
 const fs = require('fs-extra')
 const ObjectsToCsv = require('objects-to-csv');
 const Usuarios = require('../models/Usuarios')
+const { Op } = require('sequelize')
 const Cursos = require('../models/Cursos')
 const Capitulos = require('../models/Capitulos')
-
+const UsuarioCapitulo  = require('../models/UsuarioCapitulo')
 
 exports.userById = async (req,res) => {
     
@@ -42,6 +43,52 @@ exports.userById = async (req,res) => {
             res.status(400).json(err)
         })
 
+
+
+
+}
+
+
+exports.usuariosFiltrados = async (req,res) => {
+
+
+  console.log(req.body)
+  const start = req.body.desde
+  const end = req.body.hasta
+
+
+  
+  const startedDate = new Date(`${start} 00:00:00`);
+  const endDate = new Date(`${end} 00:00:00`);
+  let arr = []  
+
+     const resultado = await Usuarios.findAll({
+         include: [
+          {
+            model: Capitulos,
+            as: "usuariosVieronCapitulo",
+  
+            through: {where: {
+              created_at : { [Op.between] : [startedDate , endDate ]
+            }
+          },
+          attributes: ['created_at']            
+          }
+         
+        }
+  ]
+     })
+
+     for(let usuario of resultado){
+       if(usuario.usuariosVieronCapitulo.length > 0){
+            arr.push(usuario)
+       }
+     
+      }
+
+
+
+      res.status(200).json(arr)
 
 
 
