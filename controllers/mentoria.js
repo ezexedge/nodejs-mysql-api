@@ -1,5 +1,7 @@
 const path = require('path')
 const nodeMailer = require("nodemailer");
+const _ = require('lodash') 
+const { Op } = require('sequelize')
 const Cursos = require('../models/Cursos')
 const Mentoria = require('../models/Mentoria')
 const Capitulos = require('../models/Capitulos')
@@ -269,4 +271,88 @@ exports.guardarFiltrado = async (req,res) => {
   }
 }
 
+
+
+exports.inscripcionesPorFecha = async(req,res) => {
+  try{
+
+    let arr = []
+    const resultado = await ResultadoTest.findAll({
+      where: { created_at : { [Op.between] : [ "2020-09-09 00:00:00" , "2023-09-09 00:00:00" ]}}
+    })
+
+    for(let usuarios of resultado){
+      
+        let result = await Cursos.findOne({
+          where: { testId : usuarios.test  }
+        })
+        
+        if(result){
+            let obj = _.clone(result)
+           obj =  Object.assign(obj,{usuario: []})
+             arr.push(obj)
+       
+        }
+        
+    }
+
+    let hash = {}
+    arr = arr.filter(o => hash[o.testId] ? false : hash[o.testId] = true);
+    
+    
+    res.status(200).json(arr)
+
+
+  }catch(err){
+    res.status(400).json({error: err.message})
+  }
+}
+
+/*
+
+exports.usuariosFiltrados = async (req,res) => {
+
+
+  console.log(req.body)
+  const start = req.body.desde
+  const end = req.body.hasta
+
+
+  
+  const startedDate = new Date(`${start} 00:00:00`);
+  const endDate = new Date(`${end} 00:00:00`);
+  let arr = []  
+
+     const resultado = await Usuarios.findAll({
+         include: [
+          {
+            model: Capitulos,
+            as: "usuariosVieronCapitulo",
+  
+            through: {where: {
+              created_at : { [Op.between] : [startedDate , endDate ]
+            }
+          },
+          attributes: ['created_at']            
+          }
+         
+        }
+  ]
+     })
+
+     for(let usuario of resultado){
+       if(usuario.usuariosVieronCapitulo.length > 0){
+            arr.push(usuario)
+       }
+     
+      }
+
+
+
+      res.status(200).json(arr)
+
+
+
+}
+*/
 

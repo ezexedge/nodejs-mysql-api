@@ -25,12 +25,15 @@ module.exports = function(){
     router.get('/guardar', mentoriaControllers.guardarGetAll)
     router.get('/guardar/usuario/:id', mentoriaControllers.guardarPorUsuario)
     router.get('/guardar/test/:id', mentoriaControllers.guardarPorTest)
+
+    router.get('/guardar/aprobados', mentoriaControllers.inscripcionesPorFecha)
+    
     router.post('/resultados', mentoriaControllers.guardarFiltrado)
 
 
-    router.get('/capitulos',authControllers.requireSignin,capituloControllers.capitulosTodos)
-    router.get('/capitulos/:id',authControllers.requireSignin,capituloControllers.capitulo)
-    router.post('/capitulos/:id',authControllers.requireSignin,capituloControllers.usuarioVioCapitulo)
+    router.get('/capitulos',capituloControllers.capitulosTodos)
+    router.get('/capitulos/:id',capituloControllers.capitulo)
+    router.post('/capitulos/:id',capituloControllers.usuarioVioCapitulo)
     router.get('/capitulos/datos', capituloControllers.usuarioVioCapituloDate)
 
 

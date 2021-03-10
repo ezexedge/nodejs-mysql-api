@@ -9,7 +9,12 @@ const ResultadoTest = db.define('resultadoTest', {
     }, 
     user :  Sequelize.INTEGER,
     test : Sequelize.INTEGER,
-    aprobado : Sequelize.BOOLEAN
+    aprobado : Sequelize.BOOLEAN,
+    created_at: {
+        type: 'TIMESTAMP',
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false
+      }
     
    
     }
