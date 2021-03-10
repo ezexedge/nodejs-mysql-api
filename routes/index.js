@@ -51,7 +51,7 @@ module.exports = function(){
     router.get('/user/:id',authControllers.requireSignin,userControllers.userById)
     
     
-    router.post('/vieron',userControllers.usuariosFiltrados)
+    router.post('/capitulos/usuarios/resultados',userControllers.usuariosFiltrados)
 
 
     router.post('/signup', authControllers.signup)

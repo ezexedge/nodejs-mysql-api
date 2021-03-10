@@ -26,6 +26,7 @@
   "/api/mentoria/inscripcion/:id   GET": "GET el id hace referencia al id de una mentoria , dentro de la respuesta hay un arreglo que se llama inscripciones donde estan todos los usuarios inscriptos",
 
 
+
   "/api/respuestas/preguntas/:id": "GET  que devuelve las respuestas de una preguntas por medio del :id que deberia ser el id de la pregunta",
 
 "api/guardar/:id" : "POST GUARDAR DATOS DE RESULTADO",
@@ -35,6 +36,7 @@
 
 "api/resultados POST" : "tenes que pasar por parametro un user y un test y te devuelve un resultado si es que existe de lo contrario te devuelve un arreglo vacio",
 
+"api/capitulos/usuarios/resultados POST" : "se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String y devuelve un arreglo del usuario y dentro del mismo todos los capitulos que vio en ese fecha ",
 
 "api/mentoryday" : "get trae todos los mentoryday",
 "api/mentoryday/:id" : "trae un mentoryday"
