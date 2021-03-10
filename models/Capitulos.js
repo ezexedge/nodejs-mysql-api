@@ -8,10 +8,10 @@ const Capitulos = db.define('capitulos', {
         allowNull: false
     }, 
     nombre :  Sequelize.STRING,
-    link :  Sequelize.STRING,
+    link :  Sequelize.INTEGER,
     casoDeExito: Sequelize.BOOLEAN,
     descripcion: Sequelize.STRING,
-    linkPrev: Sequelize.STRING,
+    linkPrev: Sequelize.INTEGER,
     speaker: Sequelize.STRING
     }
 );
