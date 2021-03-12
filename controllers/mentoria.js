@@ -119,7 +119,7 @@ exports.inscripcion = async (req, res) => {
       throw new Error('Ya esta registrado')
 
     }
-    if (mentoria.disponibilidad <= 0) {
+    if (mentoria.cupo <= 0) {
       throw new Error('Ya no hay cupos disponibles')
 
     }
@@ -134,8 +134,12 @@ exports.inscripcion = async (req, res) => {
     const guardar = await UsuarioInscripto.create(po, { w: 1 }, { returning: true })
     if (guardar) {
 
-      let nuevoDisponibilidad = mentoria.disponibilidad - 1
 
+    
+      let nuevoDisponibilidad = mentoria.cupo - 1
+      console.log('disponiblidad--',nuevoDisponibilidad)
+      //console.log('menotiraaa',menotria)
+      await mentoria.update({ cupo: nuevoDisponibilidad })
 
       const emailData = {
         from: "juan@texdinamo.com", 
@@ -150,7 +154,6 @@ exports.inscripcion = async (req, res) => {
       await sendEmailWithNodemailer(req,res,emailData)
    
 
-      await mentoria.update({ disponibilidad: nuevoDisponibilidad })
       // console.log('aca ----------',mentoria.disponibilidad)
 
 
