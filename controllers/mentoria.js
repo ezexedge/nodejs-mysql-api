@@ -269,6 +269,35 @@ exports.guardar = async (req,res) => {
 
 }
 
+exports.resultadoPorUsuario = async (req,res)=>{
+  try{
+
+      const idUser = req.params.id
+
+      const resultado = await Cursos.findAll({
+        include: [
+          {
+            model: Usuarios,
+            as: "usuariosFinalizaron",
+             where: {id: idUser}
+          }]
+      })
+
+      let resp
+      if(resultado.length === 0){
+        resp = false
+      }
+      if(resultado.length > 0){
+        resp = true
+      }
+
+      res.status(200).json(resp)
+
+  }catch(err){
+    res.status(400).json({error: err.message})
+  }
+}
+
 
 
 exports.guardarFiltrado = async (req,res) => {
