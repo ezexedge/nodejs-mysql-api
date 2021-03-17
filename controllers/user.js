@@ -309,11 +309,23 @@ exports.usuariosInscriptos = async (req,res) => {
 
   try{
 
-    const resultado = await db.query(`SELECT usuarios.id AS id, usuarios.name AS nombre, usuarios.lastName AS apellido, usuarioinscriptos.email AS email , usuarioinscriptos.telefono AS telefono, mentoria.nombre AS mentoria, mentoria.created_at AS fecha FROM usuarioinscriptos
+let resultado
+    if(req.params.id === '0'){
+
+       resultado = await db.query(`SELECT usuarios.id AS id, usuarios.name AS nombre, usuarios.lastName AS apellido, usuarioinscriptos.email AS email , usuarioinscriptos.telefono AS telefono, mentoria.nombre AS mentoria, mentoria.created_at AS fecha FROM usuarioinscriptos
+    INNER JOIN mentoria ON mentoria.id = usuarioinscriptos.mentoriumId
+    INNER JOIN usuarios ON usuarios.id = usuarioinscriptos.usuarioId
+    
+    `, { type: QueryTypes.SELECT });
+  
+    }else{
+     resultado = await db.query(`SELECT usuarios.id AS id, usuarios.name AS nombre, usuarios.lastName AS apellido, usuarioinscriptos.email AS email , usuarioinscriptos.telefono AS telefono, mentoria.nombre AS mentoria, mentoria.created_at AS fecha FROM usuarioinscriptos
     INNER JOIN mentoria ON mentoria.id = usuarioinscriptos.mentoriumId
     INNER JOIN usuarios ON usuarios.id = usuarioinscriptos.usuarioId
     WHERE mentoria.id = ${req.params.id}`, { type: QueryTypes.SELECT });
   
+    }
+    
     res.status(200).json(resultado)
     
   }catch(err){
