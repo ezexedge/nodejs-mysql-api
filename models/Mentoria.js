@@ -17,7 +17,7 @@ const Mentoria = db.define('mentoria', {
     speaker: Sequelize.STRING,
     hora: Sequelize.STRING,
     imagen: Sequelize.STRING,
-    ordern: Sequelize.INTEGER,
+    orden: Sequelize.INTEGER,
     created_at: {
         type: 'TIMESTAMP',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

@@ -18,7 +18,7 @@ const Cursos = db.define('cursos', {
     tema : Sequelize.STRING,
     video: Sequelize.STRING,
     imagen: Sequelize.STRING,
-    ordern: Sequelize.INTEGER
+    orden: Sequelize.INTEGER
 
 });
 
