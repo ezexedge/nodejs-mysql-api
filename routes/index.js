@@ -52,7 +52,10 @@ module.exports = function(){
     router.post('/add/users',userControllers.createUserMultiple)
     router.get('/users',userControllers.userAll)
     router.get('/user/:id',authControllers.requireSignin,userControllers.userById)
+
     
+    router.post('/finalizaron/resultados',userControllers.probandoQuery)
+
     
     router.post('/capitulos/usuarios/resultados',userControllers.usuariosFiltrados)
 

@@ -1,7 +1,10 @@
 const fs = require('fs-extra')
+const db = require('../config/db')
+
 const ObjectsToCsv = require('objects-to-csv');
 const Usuarios = require('../models/Usuarios')
-const { Op } = require('sequelize')
+const {Op,QueryTypes } = require('sequelize')
+
 const Cursos = require('../models/Cursos')
 const Capitulos = require('../models/Capitulos')
 const UsuarioCapitulo  = require('../models/UsuarioCapitulo')
@@ -248,3 +251,26 @@ exports.createUserMultiple = async (req,res) => {
     
 }
 
+
+exports.probandoQuery = async (req,res) => {
+
+  console.log(req.body)
+  const start = req.body.desde
+  const end = req.body.hasta
+
+
+  
+
+  try{
+
+    const resultado = await db.query(`SELECT usuarios.id AS id, usuarios.name AS nombre, usuarios.lastName AS apellido, usuariofinalizarons.created_at AS fecha, cursos.nombre AS curso, usuariofinalizarons.resultado AS resultado FROM usuariofinalizarons
+    INNER JOIN usuarios ON usuariofinalizarons.usuarioId = usuarios.id
+    INNER JOIN cursos ON cursos.id = usuariofinalizarons.cursoId
+    WHERE usuariofinalizarons.created_at BETWEEN	'${start} 00:00:00' AND '${end} 23:59:59' `, { type: QueryTypes.SELECT });
+  
+    res.status(200).json(resultado)
+    
+  }catch(err){
+    res.status(400).json({error: err.message})
+  }
+}
