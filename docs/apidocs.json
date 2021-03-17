@@ -47,7 +47,7 @@
 "api/mentoryday/:id" : "trae un mentoryday",
 "ENDPOINTS DE REPORTE" : "--------------",
 
-"api/finalizaron/resultados POST" : "trae los resultados de los usuarios finalizados   se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String"
-
+"api/finalizaron/resultados POST" : "trae los resultados de los usuarios finalizados   se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String",
+"api/capitulos/usuarios/visto POST" : "trae los CAPITulos de los usuarios vistos finalizados   se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String" 
     
 }

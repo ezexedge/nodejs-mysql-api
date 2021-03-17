@@ -274,3 +274,28 @@ exports.probandoQuery = async (req,res) => {
     res.status(400).json({error: err.message})
   }
 }
+
+exports.usuariosVieron = async (req,res) => {
+
+  console.log(req.body)
+  const start = req.body.desde
+  const end = req.body.hasta
+
+
+  
+
+  try{
+
+    const resultado = await db.query(`SELECT usuarios.id AS id, usuarios.name AS nombre, usuarios.lastName AS apellido, usuariocapitulos.created_at AS fecha, cursos.nombre AS curso, capitulos.nombre AS capitulo  FROM usuariocapitulos
+    INNER JOIN usuarios ON usuariocapitulos.usuarioId = usuarios.id
+    INNER JOIN capitulos ON capitulos.id = usuariocapitulos.capituloId
+    INNER JOIN cursos ON cursos.id = usuariocapitulos.cursoId
+    WHERE usuariocapitulos.created_at BETWEEN	'${start} 00:00:00' AND '${end} 23:59:59' `, { type: QueryTypes.SELECT });
+  
+    res.status(200).json(resultado)
+    
+  }catch(err){
+    res.status(400).json({error: err.message})
+  }
+}
+

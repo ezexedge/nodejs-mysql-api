@@ -57,7 +57,7 @@ module.exports = function(){
     router.post('/finalizaron/resultados',userControllers.probandoQuery)
 
     
-    router.post('/capitulos/usuarios/resultados',userControllers.usuariosFiltrados)
+    router.post('/capitulos/usuarios/visto',userControllers.usuariosVieron)
 
     router.post('/cursos/finalizado/fecha',userControllers.cursosFiltrados)
 
