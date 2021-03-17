@@ -14,6 +14,7 @@ const MentoryDay = db.define('mentoryDay', {
     fecha: Sequelize.DATEONLY,
     horario: Sequelize.STRING,
     duracion: Sequelize.STRING,
+    orden: Sequelize.INTEGER,
     created_at: {
         type: 'TIMESTAMP',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

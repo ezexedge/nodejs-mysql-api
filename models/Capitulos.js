@@ -12,7 +12,8 @@ const Capitulos = db.define('capitulos', {
     casoDeExito: Sequelize.BOOLEAN,
     descripcion: Sequelize.STRING,
     linkPrev: Sequelize.INTEGER,
-    speaker: Sequelize.STRING
+    speaker: Sequelize.STRING,
+    orden: Sequelize.INTEGER
     }
 );
 
