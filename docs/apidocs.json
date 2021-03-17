@@ -48,6 +48,7 @@
 "ENDPOINTS DE REPORTE" : "--------------",
 
 "api/finalizaron/resultados POST" : "trae los resultados de los usuarios finalizados   se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String",
-"api/capitulos/usuarios/visto POST" : "trae los CAPITulos de los usuarios vistos finalizados   se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String" 
-    
+"api/capitulos/usuarios/visto POST" : "trae los CAPITulos de los usuarios vistos finalizados   se pasar un parametro con desde : 2021-09-02 y hasta 2021-09-02 de tipo String" ,
+"api/usuarios/mentorias/:id  GET": "por parametro se le pasa el id de la mentoria y te devuelve todos resultados de los inscriptos"
+
 }

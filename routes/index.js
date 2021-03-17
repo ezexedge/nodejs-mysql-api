@@ -61,6 +61,9 @@ module.exports = function(){
 
     router.post('/cursos/finalizado/fecha',userControllers.cursosFiltrados)
 
+    router.get('/usuarios/mentorias/:id',userControllers.usuariosInscriptos)
+
+
     router.get('/cursos/resultado/:id',mentoriaControllers.resultadoPorUsuario)
 
     router.post('/signup', authControllers.signup)

@@ -299,3 +299,25 @@ exports.usuariosVieron = async (req,res) => {
   }
 }
 
+
+exports.usuariosInscriptos = async (req,res) => {
+
+
+  
+
+  
+
+  try{
+
+    const resultado = await db.query(`SELECT usuarios.id AS id, usuarios.name AS nombre, usuarios.lastName AS apellido, usuarioinscriptos.email AS email , usuarioinscriptos.telefono AS telefono, mentoria.nombre AS mentoria, mentoria.created_at AS fecha FROM usuarioinscriptos
+    INNER JOIN mentoria ON mentoria.id = usuarioinscriptos.mentoriumId
+    INNER JOIN usuarios ON usuarios.id = usuarioinscriptos.usuarioId
+    WHERE mentoria.id = ${req.params.id}`, { type: QueryTypes.SELECT });
+  
+    res.status(200).json(resultado)
+    
+  }catch(err){
+    res.status(400).json({error: err.message})
+  }
+}
+
