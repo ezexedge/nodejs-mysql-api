@@ -17,7 +17,11 @@ const { sendEmailWithNodemailer } = require('../helpers/email')
 
 exports.mentoriaAll = async (req, res) => {
 
-  await Mentoria.findAll().then((curso) => {
+  await Mentoria.findAll({
+    order: [
+      ['orden', 'ASC'],
+  ]
+  }).then((curso) => {
 
     res.status(200).json(curso)
   })

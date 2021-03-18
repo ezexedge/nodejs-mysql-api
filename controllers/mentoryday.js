@@ -7,7 +7,11 @@ const MentoryDay = require('../models/MentoryDay')
 
 exports.mentoryDayAll = async (req, res) => {
 
-  await MentoryDay.findAll().then((curso) => {
+  await MentoryDay.findAll({
+     order: [
+            ['orden', 'ASC'],
+        ]
+  }).then((curso) => {
 
     res.status(200).json(curso)
   })

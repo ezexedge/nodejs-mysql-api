@@ -11,7 +11,10 @@ exports.cursosTodos = async (req,res) =>{
         {
           model: Usuarios,
           as: "usuariosFinalizaron"
-        }]
+        }],
+        order: [
+          ['orden', 'ASC'],
+      ]
      }).then((curso)=>{
 
         res.status(200).json(curso)

@@ -6,7 +6,11 @@ const UsuarioCapitulo = require('../models/UsuarioCapitulo')
 
 exports.capitulosTodos = async (req,res) =>{
 
-     await Capitulos.findAll()
+     await Capitulos.findAll({
+        order: [
+            ['orden', 'ASC'],
+        ]
+     })
                 .then((capitulos)=>{
 
         res.status(200).json(capitulos)
