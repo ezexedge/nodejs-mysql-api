@@ -28,15 +28,15 @@ exports.signin = async (req,res) => {
     
 
 
-const token = jwt.sign({id: user.id, cuil: user.cuil }, process.env.JWT_SECRET)
+const token = jwt.sign({id: user.id, cuil: user.cuil  }, process.env.JWT_SECRET)
 
 res.cookie("t",token,{expire: new Date() + 9999 })
 
-const {id,name,lastName} = user
+const {id,name,lastName,mam,cliente} = user
 
 req.profile = id
 req.user = user
-return res.json({ token, user: {id,cuil,name,lastName}})
+return res.json({ token, user: {id,cuil,name,lastName,mam,cliente}})
 
     
 	
